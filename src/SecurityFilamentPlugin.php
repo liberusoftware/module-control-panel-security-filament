@@ -6,6 +6,13 @@ namespace Liberu\ControlPanel\SecurityFilament;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Liberu\ControlPanel\SecurityFilament\Resources\ComplianceStatusResource;
+use Liberu\ControlPanel\SecurityFilament\Resources\HardeningControlResource;
+use Liberu\ControlPanel\SecurityFilament\Resources\IntrusionControlResource;
+use Liberu\ControlPanel\SecurityFilament\Resources\MalwareScanResource;
+use Liberu\ControlPanel\SecurityFilament\Resources\MfaRbacPolicyResource;
+use Liberu\ControlPanel\SecurityFilament\Resources\PatchRecordResource;
+use Liberu\ControlPanel\SecurityFilament\Resources\SecretRecordResource;
 use Liberu\ControlPanel\SecurityFilament\Resources\SecurityFindingResource;
 
 final class SecurityFilamentPlugin implements Plugin
@@ -22,7 +29,16 @@ final class SecurityFilamentPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel->resources([SecurityFindingResource::class]);
+        $panel->resources([
+            SecurityFindingResource::class,
+            HardeningControlResource::class,
+            ComplianceStatusResource::class,
+            PatchRecordResource::class,
+            MfaRbacPolicyResource::class,
+            SecretRecordResource::class,
+            MalwareScanResource::class,
+            IntrusionControlResource::class,
+        ]);
     }
 
     public function boot(Panel $panel): void {}
